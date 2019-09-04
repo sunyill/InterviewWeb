@@ -1,9 +1,9 @@
 <!--
  * @Description: In User Settings Edit
- * @Author: lisi
+ * @Author: wangzhan
  * @Date: 2019-09-01 23:08:41
- * @LastEditTime: 2019-09-04 22:39:13
- * @LastEditors:lis
+ * @LastEditTime: 2019-09-04 23:16:51
+ * @LastEditors:wangzhan
  -->
 
 <template>
@@ -48,8 +48,8 @@ export default {
     }
     return {
       loginForm: {
-        mobile: '',
-        code: '',
+        mobile: '13911111111',
+        code: '246810',
         check: false
       },
       myrules: {
@@ -77,6 +77,14 @@ export default {
       this.$refs.myLoginForm.validate(isOK => {
         if (isOK) {
           console.log('前端界面校验成功')
+          this.$axios({
+            method: 'post',
+            data: this.loginForm,
+            url: '/authorizations'
+          }).then((res) => {
+            console.log(res.data.data)
+            this.$router.push('/')
+          })
         }
       })
     }
