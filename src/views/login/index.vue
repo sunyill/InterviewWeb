@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: wangzhan
  * @Date: 2019-09-01 23:08:41
- * @LastEditTime: 2019-09-04 23:16:51
+ * @LastEditTime: 2019-09-05 08:17:13
  * @LastEditors:wangzhan
  -->
 
@@ -83,7 +83,8 @@ export default {
             url: '/authorizations'
           }).then((res) => {
             console.log(res.data.data)
-            this.$router.push('/')
+            window.localStorage.setItem('user-info', JSON.stringify(res.data.data))
+            this.$router.push('/home')
           })
         }
       })
